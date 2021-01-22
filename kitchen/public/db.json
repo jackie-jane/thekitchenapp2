@@ -1,17 +1,37 @@
 [
   {
     "text": "We are what we eat",
-    "image": "https://i.imgur.com/3krDEcS.png",
+    "image": "gifs/deer-2.gif",
     "number": 1
   },
   {
     "text": "I've never had a prune",
-    "image": "https://i.imgur.com/aPFcNj4.jpg",
+    "image": "gifs/deer-3op.gif",
     "number": 2
   },
   {
     "text": "Je voudrais un pizza por favor",
-    "image": "https://i.imgur.com/ywLUBaL.png",
+    "image": "gifs/fan-covering.gif",
     "number": 3
+  },
+  {
+    "text": "I've never had a prune",
+    "image": "gifs/monitoring-op.gif",
+    "number": 4
+  },
+  {
+    "text": "I've never had a prune",
+    "image": "gifs/roll-1.gif",
+    "number": 5
+  },
+  {
+    "text": "I've never had a prune",
+    "image": "gifs/styling.gif",
+    "number": 6
+  },
+  {
+    "text": "I've never had a prune",
+    "image": "gifs/wobbly.gif",
+    "number": 7
   }
 ]
