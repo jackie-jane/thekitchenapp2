@@ -8,7 +8,7 @@ const randomPosition = {
   left: Math.floor(Math.random() * (Math.random() *1000)),
 }
 
-class ArtObject extends Component {
+class ArtObjectEight extends Component {
   state = {
     text: '',
     image: ''
@@ -38,4 +38,4 @@ class ArtObject extends Component {
   }
 }
 
-export default ArtObject;
+export default ArtObjectEight;
