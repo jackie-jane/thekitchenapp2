@@ -4,8 +4,8 @@ import Draggable from 'react-draggable';
 
 const randomPosition = {
   position: 'absolute',
-  top: Math.floor(Math.random() * (Math.random() *1000)),
-  left: Math.floor(Math.random() * (Math.random() *1000)),
+  top: Math.floor(Math.random() * (Math.random() * 1000)),
+  left: Math.floor(Math.random() * (Math.random() * 1000)),
 }
 
 class ArtObject extends Component {
@@ -28,12 +28,17 @@ class ArtObject extends Component {
     let imgUrl = this.state.image
     return (
       <Draggable>
-        <img
-          src={imgUrl}
-          style={randomPosition}
-          height="300"
-          width="500" />
+        <div>
+          {words}
+        </div>
       </Draggable>
+      // <Draggable>
+      //   <img
+      //     src={imgUrl}
+      //     style={randomPosition}
+      //     height="300"
+      //     width="500" />
+      // </Draggable>
     )
   }
 }
