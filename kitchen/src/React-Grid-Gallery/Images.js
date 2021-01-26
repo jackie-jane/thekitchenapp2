@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './Images.css'
 class Images extends Component {
   state = {
     imgArray: [],
@@ -15,23 +15,17 @@ class Images extends Component {
       imgArray: newArray
     })
   }
-  handleTrack(e) {
+  handleClick = (e) => {
     this.setState({
       x: e.nativeEvent.offsetX,
       y: e.nativeEvent.offsetY
     });
   }
-  handleClick = (x, y) => {
-  }
   render() {
     return (
-      <body
-        onMouseMove={this.handleTrack}>
-        <div
-          onClick={this.handleClick}
-        >
-        </div>
-      </body>
+      <section
+        onClick={this.handleClick}>
+      </section>
     );
   }
 }

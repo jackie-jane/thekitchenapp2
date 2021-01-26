@@ -11,10 +11,12 @@
 // import ArtObjectTen from './Components/artobject10'
 // import ArtObjectEleven from './Components/artobject11'
 import Images from './React-Grid-Gallery/Images'
-
+import Body from './Layout/Body'
 function App() {
   return (
-   <Images></Images>
+    <Body>
+      <Images></Images>
+    </Body>
   )
 }
 
