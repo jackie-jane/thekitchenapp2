@@ -4,32 +4,53 @@ class Images extends Component {
   state = {
     imgArray: [],
     renderArray: [],
+    current: '',
     imageObject: {
       url: '',
       x: '',
       y: ''
-    },
-    current: '',
-    x: '',
-    y: ''
+    }
   }
   componentDidMount() {
     let newArray = Array.from({ length: 30 },
       () => Math.floor(Math.random() * 30))
     console.log(newArray)
+    let newCurrent = newArray[0]
+    newArray.shift()
+    newArray.push(newCurrent)
     this.setState({
-      imgArray: newArray
+      imgArray: newArray,
+      current: `gifs/${newCurrent}.gif`,
     })
   }
-  handleClick = (e) => {
+  handleTrack = (e) => {
     this.setState({
-      x: e.nativeEvent.offsetX,
-      y: e.nativeEvent.offsetY
+      imageObject: {
+        url: this.state.current,
+        x: e.nativeEvent.offsetX,
+        y: e.nativeEvent.offsetY
+      }
     });
+  }
+  handleClick = () => {
+    let imageToBeRendered = this.state.imageObject
+    let objectToArray = [imageToBeRendered]
+    let newArray = this.state.renderArray.concat(objectToArray)
+    let newCurrent = this.state.imgArray[0]
+    let updatedImgArray = this.state.imgArray.shift()
+    updatedImgArray = updatedImgArray.push(newCurrent)
+    newArray.shift()
+    newArray.push(newCurrent)
+    this.setState({
+      renderArray: newArray,
+      imgArray: updatedImgArray,
+      current: newCurrent
+    })
   }
   render() {
     return (
       <section
+        onMouseMove={this.handleTrack}
         onClick={this.handleClick}>
       </section>
     );
