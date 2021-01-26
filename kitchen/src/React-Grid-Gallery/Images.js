@@ -3,6 +3,12 @@ import './Images.css'
 class Images extends Component {
   state = {
     imgArray: [],
+    renderArray: [],
+    imageObject: {
+      url: '',
+      x: '',
+      y: ''
+    },
     current: '',
     x: '',
     y: ''
