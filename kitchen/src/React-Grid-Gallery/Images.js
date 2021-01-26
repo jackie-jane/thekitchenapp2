@@ -7,17 +7,18 @@ class Images extends Component {
 
   componentDidMount() {
     let imageNumber = Math.floor(Math.random() * Math.floor(29))
-    console.log(imageNumber)
+    let newArray = this.state.imgArray.push(imageNumber);
+    console.log(newArray)
     this.setState({
-      imgArray: this.state.imgArray(imageNumber)
+      imgArray: newArray
     })
-    { this.addAnImg(10) }
+    {this.addAnImg(10)}
   }
   addAnImg = (num) => {
     if (num > 1) {
       let imageNumber = Math.floor(Math.random() * Math.floor(29))
-      let timer = Math.floor(Math.random() * Math.floor(3000))
-      let newArray = this.state.imgArray.push(imageNumber)
+      let timer = Math.floor(Math.random() * Math.floor(30000))
+      let newArray = this.state.imgArray.push(imageNumber);
       setTimeout(
         function () {
           this.setState({
@@ -25,21 +26,19 @@ class Images extends Component {
           });
         }
           .bind(this),
-        (timer)
+        timer
       )
       { this.addAnImg(num - 1) }
     }
   }
-  // componentDidUpdate(prevProps, prevState) {
-
-  // }
   render() {
-    // let url = `gifs/${this.state.img}.gif`
-    // console.log(url)
+    console.log(this.state.imgArray)
     return (
       <>
+        {/* {this.state.imgArray.map(function (element) {
+          <img src={`gifs/${element}.gif`}/>
+        })} */}
       </>
-      // <img src={url} />
     );
   }
 }
