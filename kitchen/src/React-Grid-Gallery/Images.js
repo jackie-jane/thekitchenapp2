@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Gallery from 'react-grid-gallery';
 import './Images.css'
 class Images extends Component {
   state = {
@@ -51,6 +52,15 @@ class Images extends Component {
       <section
         onMouseMove={this.handleTrack}
         onClick={this.handleClick}>
+        {this.state.renderArray.map(element =>
+          <img src={element.url}
+            style={{
+              position: "absolute",
+              top: `${element.y}px`,
+              left: `${element.x}px`
+            }}
+          />
+        )}
       </section>
     );
   }
