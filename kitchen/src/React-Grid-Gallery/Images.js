@@ -12,7 +12,7 @@ class Images extends Component {
     }
   }
   componentDidMount() {
-    let newArray = Array.from({ length: 30 },
+    let newArray = Array.from({ length: 100 },
       () => Math.floor(Math.random() * 30))
     console.log(newArray)
     let newCurrent = newArray[0]
@@ -26,7 +26,7 @@ class Images extends Component {
   handleTrack = (e) => {
     this.setState({
       imageObject: {
-        url: this.state.current,
+        url: `gifs/${this.state.current}.gif`,
         x: e.nativeEvent.offsetX,
         y: e.nativeEvent.offsetY
       }
@@ -36,11 +36,10 @@ class Images extends Component {
     let imageToBeRendered = this.state.imageObject
     let objectToArray = [imageToBeRendered]
     let newArray = this.state.renderArray.concat(objectToArray)
-    let newCurrent = this.state.imgArray[0]
-    let updatedImgArray = this.state.imgArray.shift()
-    updatedImgArray = updatedImgArray.push(newCurrent)
-    newArray.shift()
-    newArray.push(newCurrent)
+    let newCurrent = this.state.imgArray.shift()
+    let updatedImgArray = this.state.imgArray
+    updatedImgArray.shift()
+    updatedImgArray.push(newCurrent)
     this.setState({
       renderArray: newArray,
       imgArray: updatedImgArray,
