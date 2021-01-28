@@ -50,7 +50,7 @@ class Images extends Component {
     })
   }
   render() {
-    let randomSize = Math.floor(Math.random() * 100))
+    let randomSize = Math.floor(Math.random() * 100)
     return (
       <section
         onMouseMove={this.handleTrack}
