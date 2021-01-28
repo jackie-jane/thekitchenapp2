@@ -7,7 +7,8 @@ class Images extends Component {
     imgArray: [],
     renderArray: [],
     current: '',
-    imageObject: {
+    imageObject:
+    {
       url: '',
       x: '',
       y: ''
@@ -49,6 +50,7 @@ class Images extends Component {
     })
   }
   render() {
+    let randomSize = Math.floor(Math.random() * 100))
     return (
       <section
         onMouseMove={this.handleTrack}
@@ -59,7 +61,8 @@ class Images extends Component {
               style={{
                 position: "absolute",
                 top: `${element.y}px`,
-                left: `${element.x}px`
+                left: `${element.x}px`,
+                size: `${randomSize}%`
               }}
             />
           </Draggable>
