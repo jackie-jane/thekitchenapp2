@@ -15,7 +15,7 @@ class Images extends Component {
   }
   componentDidMount() {
     let newArray = Array.from({ length: 100 },
-      () => Math.floor(Math.random() * 30))
+      () => Math.floor(Math.random() * 45))
     console.log(newArray)
     let newCurrent = newArray[0]
     newArray.shift()
@@ -64,7 +64,7 @@ class Images extends Component {
             />
           </Draggable>
         )}
-        </section>
+      </section>
     );
   }
 }
