@@ -9,9 +9,7 @@ function App() {
       <Body>
         <Images></Images>
       </Body>
-      <Footer>
-        <AutoScroll></AutoScroll>
-      </Footer>
+      <Footer></Footer>
     </>
   )
 }

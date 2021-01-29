@@ -6,39 +6,48 @@ section {
   width: auto;
   overflow: auto;
 }
-.0 {
+.zero {
 width: 50px;
-height: auto
+height: auto;
+position: "absolute"
 }
-.1 {
-  width: 50px;
-  height: auto
+.one {
+  width: 100px;
+  height: auto;
+  position: "absolute";
 }
-.2 {
-  width: 50px;
-  height: auto
+.two {
+  width: 150px;
+  height: auto;
+  position: "absolute";
 }
-.3 {
-  width: 50px;
-  height: auto
+.three {
+  width: 200px;
+  height: auto;
+  position: "absolute";
 }
-.4 {
-  width: 50px;
-  height: auto
+.four {
+  width: 250px;
+  height: auto;
+  position: "absolute";
 }
-.5 {
-  width: 50px;
-  height: auto
+.five {
+  width: 300px;
+  height: auto;
+  position: "absolute";
 }
-.6 {
-  width: 50px;
-  height: auto
+.six {
+  width: 400px;
+  height: auto;
+  position: "absolute";
 }
-.7 {
-  width: 50px;
-  height: auto
+.seven {
+  width: 450px;
+  height: auto;
+  position: "absolute";
 }
-.8 {
-  width: 50px;
-  height: auto
+.eight {
+  width: 500px;
+  height: auto;
+  position: "absolute";
 }

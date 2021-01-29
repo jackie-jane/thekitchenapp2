@@ -27,7 +27,35 @@ class Images extends Component {
     })
   }
   handleTrack = (e) => {
-    let randomClass = Math.floor(Math.random() * 8 )
+    let randomClass = Math.floor(Math.random() * 8)
+    switch (randomClass) {
+      case 0:
+        day = "zero";
+        break;
+      case 1:
+        day = "one";
+        break;
+      case 2:
+        day = "two";
+        break;
+      case 3:
+        day = "three";
+        break;
+      case 4:
+        day = "four";
+        break;
+      case 5:
+        day = "five";
+        break;
+      case 6:
+        day = "six";
+        break;
+      case 7:
+        day = "seven";
+        break;
+      case 8:
+        day = "eight";
+    }
     this.setState({
       imageObject: {
         url: `gifs/${this.state.current}.gif`,
@@ -52,8 +80,6 @@ class Images extends Component {
     })
   }
   render() {
-    let randomSize = Math.floor(Math.random() * 100)
-      
     return (
       <section
         onMouseMove={this.handleTrack}
@@ -62,7 +88,6 @@ class Images extends Component {
           <div
             className={`${element.randomClass}`}
             style={{
-              position: "absolute",
               top: `${element.y}px`,
               left: `${element.x}px`,
               background: `url(${element.url})`,
