@@ -1,6 +1,5 @@
 
 import React from 'React'
-import ReactAutoScroll from "react-to-target-auto-scroll"
 
 export default class AutoScroll extends Component {
   render() {
