@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Draggable from 'react-draggable'
 
 import './Images.css'
 class Images extends Component {
@@ -11,7 +10,8 @@ class Images extends Component {
     {
       url: '',
       x: '',
-      y: ''
+      y: '',
+      class: ''
     }
   }
   componentDidMount() {
@@ -27,11 +27,13 @@ class Images extends Component {
     })
   }
   handleTrack = (e) => {
+    let randomClass = Math.floor(Math.random() * 8 )
     this.setState({
       imageObject: {
         url: `gifs/${this.state.current}.gif`,
         x: e.nativeEvent.offsetX,
-        y: e.nativeEvent.offsetY
+        y: e.nativeEvent.offsetY,
+        class: randomClass
       }
     });
   }
@@ -51,21 +53,22 @@ class Images extends Component {
   }
   render() {
     let randomSize = Math.floor(Math.random() * 100)
+      
     return (
       <section
         onMouseMove={this.handleTrack}
         onClick={this.handleClick}>
         {this.state.renderArray.map(element =>
-          <Draggable>
-            <img src={element.url}
-              style={{
-                position: "absolute",
-                top: `${element.y}px`,
-                left: `${element.x}px`,
-                size: `${randomSize}%`
-              }}
-            />
-          </Draggable>
+          <div
+            className={`${element.randomClass}`}
+            style={{
+              position: "absolute",
+              top: `${element.y}px`,
+              left: `${element.x}px`,
+              background: `url(${element.url})`,
+              backgroundSize: 'cover'
+            }}
+          />
         )}
       </section>
     );

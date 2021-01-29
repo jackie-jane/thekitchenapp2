@@ -1,8 +1,44 @@
 section {
   background: transparent;
-  min-height: 10000vh;
-  min-width: 10000vw;
+  min-height: 200vh;
+  min-width: 100vw;
   height: auto;
   width: auto;
   overflow: auto;
+}
+.0 {
+width: 50px;
+height: auto
+}
+.1 {
+  width: 50px;
+  height: auto
+}
+.2 {
+  width: 50px;
+  height: auto
+}
+.3 {
+  width: 50px;
+  height: auto
+}
+.4 {
+  width: 50px;
+  height: auto
+}
+.5 {
+  width: 50px;
+  height: auto
+}
+.6 {
+  width: 50px;
+  height: auto
+}
+.7 {
+  width: 50px;
+  height: auto
+}
+.8 {
+  width: 50px;
+  height: auto
 }
