@@ -30,31 +30,31 @@ class Images extends Component {
     let randomClass = Math.floor(Math.random() * 8)
     switch (randomClass) {
       case 0:
-        day = "zero";
+        randomClass = "zero";
         break;
       case 1:
-        day = "one";
+        randomClass = "one";
         break;
       case 2:
-        day = "two";
+        randomClass = "two";
         break;
       case 3:
-        day = "three";
+        randomClass = "three";
         break;
       case 4:
-        day = "four";
+        randomClass = "four";
         break;
       case 5:
-        day = "five";
+        randomClass = "five";
         break;
       case 6:
-        day = "six";
+        randomClass = "six";
         break;
       case 7:
-        day = "seven";
+        randomClass = "seven";
         break;
       case 8:
-        day = "eight";
+        randomClass = "eight";
     }
     this.setState({
       imageObject: {
@@ -85,15 +85,15 @@ class Images extends Component {
         onMouseMove={this.handleTrack}
         onClick={this.handleClick}>
         {this.state.renderArray.map(element =>
-          <div
-            className={`${element.randomClass}`}
+          <img
+            src={element.url}
+            className={`${element.class}`}
             style={{
+              position: "absolute",
               top: `${element.y}px`,
-              left: `${element.x}px`,
-              background: `url(${element.url})`,
-              backgroundSize: 'cover'
-            }}
-          />
+              left: `${element.x}px`
+            }}>
+          </img>
         )}
       </section>
     );
