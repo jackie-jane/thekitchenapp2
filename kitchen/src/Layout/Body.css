@@ -1,7 +1,7 @@
 .void {
   background-color: black;
-  min-height: 10000vh;
-  min-width: 10000vw;
+  min-height: 200vh;
+  min-width: 100vw;
   height: auto;
   width: auto;
   overflow: auto;
