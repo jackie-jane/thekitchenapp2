@@ -3,14 +3,18 @@ import React from 'react'
 import Images from './React-Grid-Gallery/Images'
 import Body from './Layout/Body'
 import Footer from './Layout/Footer'
+import Background from './Layout/Background'
 
 function App() {
   return (
     <>
-      <Body>
+      {/* <Body>
         <Images></Images>
       </Body>
-      <Footer></Footer>
+      <Footer></Footer> */}
+      <Body>
+        <Background></Background>
+      </Body>
     </>
   )
 }
