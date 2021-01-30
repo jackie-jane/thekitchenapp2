@@ -1,4 +1,6 @@
 section {
+  position: absolute;
+  z-index: 5;
   background: transparent;
   min-height: 200vh;
   min-width: 100vw;

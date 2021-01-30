@@ -118,5 +118,65 @@
   {
     "image": "gifs/30.gif",
     "number": 30
+  },
+  {
+    "image":  "backgroundGifs/0.gif",
+    "number": 31
+  },
+  {
+    "image": "backgroundGifs/1.gif",
+    "number": 32
+  },
+  {
+    "image": "backgroundGifs/2.gif",
+    "number": 33
+  },
+  {
+    "image": "backgroundGifs/3.gif",
+    "number": 33
+  },
+  {
+    "image": "backgroundGifs/4.gif",
+    "number": 34
+  },
+  {
+    "image": "backgroundGifs/5.gif",
+    "number": 35
+  },
+  {
+    "image": "backgroundGifs/6.gif",
+    "number": 36
+  },
+  {
+    "image": "backgroundGifs/7.gif",
+    "number": 37
+  },
+  {
+    "image": "backgroundGifs/8.gif",
+    "number": 38
+  },
+  {
+    "image": "backgroundGifs/9.gif",
+    "number": 39
+  },
+  {
+    "image": "backgroundGifs/10.gif",
+    "number": 40
+  },
+  {
+    "image": "backgroundGifs/11.gif",
+    "number": 41
+  },
+  {
+    "image": "backgroundGifs/12.gif",
+    "number": 42
+  },
+  {
+    "image": "backgroundGifs/13.gif",
+    "number": 43
+  },
+  {
+    "image": "backgroundGifs/14.gif",
+    "number": 44
   }
 ]
