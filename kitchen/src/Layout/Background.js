@@ -1,14 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import Masonry from 'react-masonry-component';
+import 'dbBackground.json'
 
-// This comes from a tutorial by John O. Paul found here 'https://medium.com/the-andela-way/how-to-create-a-masonry-layout-component-using-react-f30ec9ca5e99'
-const BackgroundImages = (props) => {
-  const gifs = props.gifs.map(( url, class) => {
-    return <img src={url} className={class} />
-  }
-}),
-
-MasonryLayout.defaultProps = {
-  columns: 2,
-  gap: 20,
+const masonryOptions = {
+    transitionDuration: 0
 };
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
+
+class Gallery extends React.Component {
+    render() {
+        const childElements = this.props.elements.map(function(element){
+           return (
+                <li className="image-element-class">
+                    <img src={element.src} />
+                </li>
+            );
+        });
+        return (
+            <Masonry
+                className={'my-gallery-class'} // default ''
+                elementType={'ul'} // default 'div'
+                options={masonryOptions} // default {}
+                disableImagesLoaded={false} // default false
+                updateOnEachImageLoad={true} // default false and works only if disableImagesLoaded is false
+                imagesLoadedOptions={imagesLoadedOptions} // default {}
+            >
+                {childElements}
+            </Masonry>
+        );
+    }
+}
+export default Gallery;
