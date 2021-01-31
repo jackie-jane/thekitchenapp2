@@ -1,7 +1,8 @@
 .void {
-  background-color: rgb(119, 119, 160) ;
+  background: url("../voidGif/background1.gif.gif");
   min-height: 200vh;
   min-width: 100vw;
+  background-position: cover;
   height: auto;
   width: auto;
   overflow: auto;
