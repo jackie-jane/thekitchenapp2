@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Background from '../Layout/Background'
 import Body from '../Layout/Body'
 import Footer from '../Layout/Footer'
+import Audio from '../Components/Audio'
 import './Images.css'
 class Images extends Component {
   state = {
@@ -83,17 +84,19 @@ class Images extends Component {
   //   })
   // }
   handleAudio = () => {
-    const testAudio = 'Audio/testAudio'
-    testAudio.play()
+    this.setState({
+      audio: true
+    })
   }
-render() {
-  return (
-    <>
-      <Body>
-        <section
-          onMouseMove={this.handleTrack}
-          onClick={this.handleAudio}>
-          {/* // onClick={this.handleClick}>
+  render() {
+    return (
+      <>
+        <Body>
+          <section
+            onMouseMove={this.handleTrack}
+            onClick={this.handleAudio}>
+            {this.state.audio ? <Audio></Audio> : <></>}
+            {/* // onClick={this.handleClick}>
             // {this.state.renderArray.map(element =>
             //   <img
             //     src={element.url}
@@ -105,14 +108,14 @@ render() {
             //     }}>
             //   </img>
             // )} */}
-          <Background></Background>
-        </section>
-      </Body>
-      <Footer>
-      </Footer>
-    </>
-  );
-}
+            <Background></Background>
+          </section>
+        </Body>
+        <Footer>
+        </Footer>
+      </>
+    );
+  }
 }
 
 export default Images;

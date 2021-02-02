@@ -5,8 +5,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 class Background extends React.Component {
   state = {
     renderArray: [],
-    upcomingArray: [], 
-    
+    upcomingArray: []
   }
 
   async componentDidMount() {
