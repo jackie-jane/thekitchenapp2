@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Background from '../Layout/Background'
 import Body from '../Layout/Body'
 import Footer from '../Layout/Footer'
+import Audio from '../Components/Audio'
 import './Images.css'
 class Images extends Component {
   state = {
@@ -14,7 +15,8 @@ class Images extends Component {
       x: '',
       y: '',
       class: ''
-    }
+    },
+    audio: false
   }
   componentDidMount() {
     let newArray = Array.from({ length: 100 },
@@ -68,6 +70,14 @@ class Images extends Component {
     });
   }
   handleClick = () => {
+    let randomInt = Math.floor(Math.random() * 100)
+    if (randomInt < 50) {
+      { this.imageUpload() }
+    } else {
+      { this.audioPlay() }
+    }
+  }
+  imageUpload = () => {
     let imageToBeRendered = this.state.imageObject
     let objectToArray = [imageToBeRendered]
     let newArray = this.state.renderArray.concat(objectToArray)
@@ -81,6 +91,17 @@ class Images extends Component {
       current: newCurrent
     })
   }
+  audioPlay = () => {
+    if (this.state.audio === false) {
+      this.setState({
+        audio: true
+      })
+    } else {
+      this.setState({
+        audio: false
+      })
+    }
+  }
   render() {
     return (
       <>
@@ -88,6 +109,7 @@ class Images extends Component {
           <section
             onMouseMove={this.handleTrack}
             onClick={this.handleClick}>
+            {this.state.audio ? <Audio></Audio> : <></>}
             {this.state.renderArray.map(element =>
               <img
                 src={element.url}
