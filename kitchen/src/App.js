@@ -1,4 +1,3 @@
-
 import React from 'react'
 import Images from './React-Grid-Gallery/Images'
 import Footer from './Layout/Footer'

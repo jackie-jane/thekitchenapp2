@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { createArray } from '../Services/Services'
+import { randomClass, iterateOnClick, toggleAudio } from '../Services/onClickMethods'
 import Background from '../Layout/Background'
 import Body from '../Layout/Body'
 import Footer from '../Layout/Footer'
@@ -6,9 +8,9 @@ import Audio from '../Components/Audio'
 import './Images.css'
 class Images extends Component {
   state = {
-    imgArray: [],
-    renderArray: [],
-    current: '',
+    userImgArray: [],
+    renderedArray: [],
+    currentImage: '',
     imageObject:
     {
       url: '',
@@ -18,57 +20,27 @@ class Images extends Component {
     },
     audio: false
   }
+
   componentDidMount() {
-    let newArray = Array.from({ length: 100 },
-      () => Math.floor(Math.random() * 45))
-    console.log(newArray)
-    let newCurrent = newArray[0]
-    newArray.shift()
-    newArray.push(newCurrent)
+    let response = createArray(100)
     this.setState({
-      imgArray: newArray,
-      current: `gifs/${newCurrent}.gif`,
+      userImgArray: response.newArray,
+      currentImage: `gifs/${response.currentNum}.gif`,
     })
   }
+
   handleTrack = (e) => {
-    let randomClass = Math.floor(Math.random() * 8)
-    switch (randomClass) {
-      case 0:
-        randomClass = "zero";
-        break;
-      case 1:
-        randomClass = "one";
-        break;
-      case 2:
-        randomClass = "two";
-        break;
-      case 3:
-        randomClass = "three";
-        break;
-      case 4:
-        randomClass = "four";
-        break;
-      case 5:
-        randomClass = "five";
-        break;
-      case 6:
-        randomClass = "six";
-        break;
-      case 7:
-        randomClass = "seven";
-        break;
-      case 8:
-        randomClass = "eight";
-    }
+    let newClass = randomClass()
     this.setState({
       imageObject: {
-        url: `gifs/${this.state.current}.gif`,
+        url: this.state.currentImage,
         x: e.nativeEvent.offsetX,
         y: e.nativeEvent.offsetY,
-        class: randomClass
+        class: newClass
       }
     });
   }
+
   handleClick = () => {
     let randomInt = Math.floor(Math.random() * 100)
     if (randomInt < 50) {
@@ -77,40 +49,36 @@ class Images extends Component {
       { this.audioPlay() }
     }
   }
+
   imageUpload = () => {
-    let imageToBeRendered = this.state.imageObject
-    let objectToArray = [imageToBeRendered]
-    let newArray = this.state.renderArray.concat(objectToArray)
-    let newCurrent = this.state.imgArray.shift()
-    let updatedImgArray = this.state.imgArray
-    updatedImgArray.shift()
-    updatedImgArray.push(newCurrent)
+    const s = this.state
+    let response = iterateOnClick(s.userImgArray, s.renderedArray, s.currentImage
+    )
     this.setState({
-      renderArray: newArray,
-      imgArray: updatedImgArray,
-      current: newCurrent
+      renderedArray: response.newFinalArray,
+      userImgArray: response.newUpcomingArray,
+      currentImage: `gifs/${response.newCurrent}.gif`
     })
   }
+
   audioPlay = () => {
-    if (this.state.audio === false) {
-      this.setState({
-        audio: true
-      })
-    } else {
-      this.setState({
-        audio: false
-      })
-    }
+    let response = toggleAudio(this.state.audio)
+    this.setState({
+      audio: response
+    })
   }
+
   render() {
+    let t = this
+    let s = this.state
     return (
       <>
         <Body>
           <section
-            onMouseMove={this.handleTrack}
-            onClick={this.handleClick}>
-            {this.state.audio ? <Audio></Audio> : <></>}
-            {this.state.renderArray.map(element =>
+            onMouseMove={t.handleTrack}
+            onClick={t.handleClick}>
+            {s.audio ? <Audio></Audio> : <></>}
+            {s.renderedArray.map(element =>
               <img
                 src={element.url}
                 className={`${element.class}`}
@@ -124,8 +92,6 @@ class Images extends Component {
             <Background></Background>
           </section>
         </Body>
-        <Footer>
-        </Footer>
       </>
     );
   }
