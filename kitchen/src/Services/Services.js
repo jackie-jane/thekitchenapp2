@@ -10,6 +10,14 @@ export const createGridArray = async (url) => {
   }
 };
 
+export const createArray = (amountOfEl) => {
+  let newArray = Array.from({ length: amountOfEl },
+    () => Math.floor(Math.random() * 47))
+  let currentNum = newArray[0]
+  newArray.shift()
+  return { 'newArray': newArray, 'currentNum': currentNum }
+}
+
 export const iterateArray = (upcomingArray, finalArray) => {
   let upcomingArrayCopy = upcomingArray
   let finalArrayCopy = finalArray
