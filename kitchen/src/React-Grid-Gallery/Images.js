@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { createArray } from '../Services/Services'
-import { randomClass, iterateOnClick, toggleAudio, randomInt } from '../Services/onClickMethods'
+import { createArray, randomInt } from '../Services/Services'
+import { randomClass, iterateOnClick, toggleAudio } from '../Services/onClickMethods'
 import Audio from '../Components/Audio'
 import './Images.css'
 
-const t = this
-const s = this.state
-
 class Images extends Component {
+  constructor() {
+    super();
+  }
   state = {
     userImgArray: [],
     renderedArray: [],
@@ -25,7 +25,7 @@ class Images extends Component {
 
   componentDidMount() {
     let response = createArray(100)
-    t.setState({
+    this.setState({
       userImgArray: response.newArray,
       currentImage: `gifs/${response.currentNum}.gif`,
     })
@@ -33,9 +33,9 @@ class Images extends Component {
 
   handleTrack = (e) => {
     let newClass = randomClass(8)
-    t.setState({
+    this.setState({
       imageObject: {
-        url: s.currentImage,
+        url: this.state.currentImage,
         x: e.nativeEvent.offsetX,
         y: e.nativeEvent.offsetY,
         class: newClass
@@ -46,18 +46,18 @@ class Images extends Component {
   handleClick = () => {
     let num = randomInt(100)
     if (num < 50) {
-      { t.imageUpload() }
+      { this.imageUpload() }
     } else {
-      { t.audioPlay() }
+      { this.audioPlay() }
     }
   }
 
   imageUpload = () => {
     let response = iterateOnClick(
-      s.userImgArray,
-      s.renderedArray,
-      s.currentImage)
-    t.setState({
+      this.state.imageObject,
+      this.state.renderedArray,
+      this.state.userImgArray)
+    this.setState({
       renderedArray: response.newFinalArray,
       userImgArray: response.newUpcomingArray,
       currentImage: `gifs/${response.newCurrent}.gif`
@@ -65,30 +65,30 @@ class Images extends Component {
   }
 
   audioPlay = () => {
-    let response = toggleAudio(s.audio)
-    t.setState({
+    let response = toggleAudio(this.state.audio)
+    this.setState({
       audio: response
     })
   }
 
   gifResize = () => {
-    let imgArray = s.renderedArray
+    let imgArray = this.state.renderedArray
     imgArray.forEach(el => {
       let newClass = randomClass(8)
       el.class = newClass
     })
-    t.setState({
+    this.setState({
       renderedArray: imgArray
     })
   }
 
   flipGif = () => {
-    let imgArray = s.renderedArray
+    let imgArray = this.state.renderedArray
     imgArray.forEach(el => {
       let rotate = randomInt(360)
       el.transform = `rotate(${rotate}deg)`
     })
-    t.setState({
+    this.setState({
       renderedArray: imgArray
     })
   }
@@ -97,17 +97,17 @@ class Images extends Component {
     return (
       <div
         id='userGeneratedImageContainer'
-        onMouseMove={t.handleTrack}
-        onClick={t.handleClick}>
-        {s.audio ? <Audio></Audio> : <></>}
-        {s.renderedArray.map(el =>
+        onMouseMove={this.handleTrack}
+        onClick={this.handleClick}>
+        {this.state.audio ? <Audio></Audio> : <></>}
+        {this.state.renderedArray.map(el =>
           <img
             src={el.url}
             className={`${el.class}`}
             style={{
               position: "absolute",
-              top: `${element.y}px`,
-              left: `${element.x}px`,
+              top: `${el.y}px`,
+              left: `${el.x}px`,
               transform: el.transform
             }}
           />

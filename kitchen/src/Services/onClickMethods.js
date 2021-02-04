@@ -31,12 +31,13 @@ export const randomClass = (n) => {
   return randomClass
 }
 
-export const iterateOnClick = (upcomingArr, finalArr, current) => {
-  let newUpArr = upcomingArr;
+export const iterateOnClick = (nextValue, finalArr, userArr) => {
+  let value = nextValue;
+  let newUpArr = userArr
   let newFinArr = finalArr;
-  let newCurrent = upcomingArr[0]
-  newUpArr.shift
-  newFinArr.push(current)
+  let newCurrent = userArr[0]
+  newUpArr.shift()
+  newFinArr.push(value)
   return { newCurrent: newCurrent, newFinalArray: newFinArr, newUpcomingArray: newUpArr }
 }
 
