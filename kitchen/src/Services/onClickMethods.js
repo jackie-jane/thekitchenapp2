@@ -1,5 +1,5 @@
-export const randomClass = () => {
-  let randomClass = Math.floor(Math.random() * 8)
+export const randomClass = (n) => {
+  let randomClass = Math.floor(Math.random() * n)
   switch (randomClass) {
     case 0:
       randomClass = "zero";

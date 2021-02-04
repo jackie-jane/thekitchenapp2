@@ -28,3 +28,8 @@ export const iterateArray = (upcomingArray, finalArray) => {
     'finalArray': finalArrayCopy,
   }
 }
+
+export const randomInt = (n) => {
+  let randomInt = Math.floor(Math.random() * n)
+  return randomInt
+}
