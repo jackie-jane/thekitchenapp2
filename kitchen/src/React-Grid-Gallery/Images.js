@@ -36,8 +36,8 @@ class Images extends Component {
     this.setState({
       imageObject: {
         url: this.state.currentImage,
-        x: e.nativeEvent.offsetX,
-        y: e.nativeEvent.offsetY,
+        x: e.pageX,
+        y: e.pageY,
         class: newClass
       }
     });
