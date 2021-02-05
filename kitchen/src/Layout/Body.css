@@ -1,5 +1,6 @@
 .void {
-  background: url("../voidGif/background1.gif.gif");
+  /* background: url("../voidGif/background1.gif.gif"); */
+  background-color: darkgray;
   min-height: 200vh;
   min-width: 100vw;
   background-position: cover;

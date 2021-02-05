@@ -1,12 +1,14 @@
 import React from "react"
-import {iterateArray, randomInt } from '../Services/Services'
+import { iterateArray, randomInt } from '../Services/Services'
 import { randomClass } from '../Services/onClickMethods'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
 class Background extends React.Component {
   state = {
     renderGridArray: [],
-    upcomingGridArray: []
+    upcomingGridArray: [],
+    i: 1,
+    j: 0
   }
 
   async componentDidMount() {
@@ -14,7 +16,7 @@ class Background extends React.Component {
     let finalGridArray = []
     let i = 0
     while (i < 100) {
-      let randInt = randomInt(100)
+      let randInt = randomInt(500)
       newGridArray.push(randInt)
       i++
     }
@@ -34,18 +36,45 @@ class Background extends React.Component {
       }
       finalGridArray.push(image)
     })
-    this.interval = setInterval(() => { this.updateRender() }, 5000);
+    this.interval = setInterval(() => { this.updateRender(this.state.i, this.state.j) }, 5000);
     this.setState({
       upcomingGridArray: finalGridArray
     })
   }
 
-  updateRender = () => {
-    let response = iterateArray(this.state.upcomingGridArray, this.state.renderGridArray)
+  updateRender = (numOne, numTwo) => {
+    let i = numOne
+    let j = numTwo
+    let numberOfImages = i + j
+    let upcoming = this.state.upcomingGridArray
+    let final = this.state.renderGridArray
+    let newJ = ''
+    let newI = ''
+    let arrLength = upcoming.length
+    if (arrLength > 0) {
+      let updateFinal = upcoming.slice(arrLength - numberOfImages)
+      console.log(updateFinal)
+      final = final.concat(updateFinal)
+      newJ = i
+      newI = numberOfImages
+    }
+    upcoming.splice(arrLength, numberOfImages)
     this.setState({
-      renderGridArray: response.finalArray,
-      upcomingGridArray: response.upcomingArray
+      renderGridArray: final,
+      upcomingGridArray: upcoming,
+      i: newI,
+      j: newJ
     })
+    //   let response = iterateArray(
+    //     this.state.upcomingGridArray,
+    //     this.state.renderGridArray,
+    //     1,
+    //     0)
+    //   this.setState({
+    //     renderGridArray: response.finalArray,
+    //     upcomingGridArray: response.upcomingArray
+    //   })
+    // }
   }
 
   render() {
@@ -54,23 +83,14 @@ class Background extends React.Component {
       <ResponsiveMasonry
         columnsCountBreakPoints={{
           50: 1,
-          100: 2,
-          150: 3,
-          200: 4,
-          250: 5,
-          300: 6,
-          350: 7,
-          400: 8,
-          450: 9,
-          500: 10,
-          550: 11,
-          600: 12,
-          650: 13,
-          700: 14,
-          750: 15,
-          800: 16,
-          850: 17,
-          900: 18,
+          150: 2,
+          250: 3,
+          350: 4,
+          450: 5,
+          650: 6,
+          750: 7,
+          850: 8,
+          900: 9,
         }}
       >
         <Masonry>

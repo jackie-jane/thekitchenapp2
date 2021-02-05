@@ -18,15 +18,26 @@ export const createArray = (amountOfEl) => {
   return { 'newArray': newArray, 'currentNum': currentNum }
 }
 
-export const iterateArray = (upcomingArray, finalArray) => {
-  let upcomingArrayCopy = upcomingArray
-  let finalArrayCopy = finalArray
-  finalArrayCopy.push(upcomingArrayCopy[0])
-  upcomingArrayCopy.shift()
+export const iterateArray = (upcomingArray, finalArray, numOne, numTwo) => {
+  let j = numTwo
+  let i = numOne
+  let upcomingArrayCopy = upcomingArray;
+  let finalArrayCopy = finalArray;
+  let current = ''
+  if (i < 500) {
+    let numberOfImages = i + j
+    let imgArr = upcomingArrayCopy.slice(numberOfImages)
+    finalArrayCopy.concat(imgArr)
+    upcomingArrayCopy.slice(numberOfImages)
+    j = i
+    i = numberOfImages
+  }
+  setTimeout(() => { iterateArray(upcomingArrayCopy, finalArrayCopy, i, j) }, 5000)
   return {
     'upcomingArray': upcomingArrayCopy,
     'finalArray': finalArrayCopy,
   }
+
 }
 
 export const randomInt = (n) => {
