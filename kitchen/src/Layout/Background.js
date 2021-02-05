@@ -25,7 +25,7 @@ class Background extends React.Component {
       }
       finalGridArray.push(image)
     })
-    this.interval = setInterval(() => { this.updateRender(this.state.i, this.state.j) }, 5000);
+    this.interval = setInterval(() => { this.updateRender(this.state.i, this.state.j) }, 10000);
     this.setState({
       upcomingGridArray: finalGridArray
     })
