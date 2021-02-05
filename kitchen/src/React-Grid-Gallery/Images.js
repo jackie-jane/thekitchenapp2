@@ -47,12 +47,13 @@ class Images extends Component {
   handleClick = () => {
     { this.imageUpload() }
     let num = randomInt(100)
-    console.log(num)
-    // if (num < 50) {
-    //   { this.imageUpload() }
-    // } else {
-    //   { this.audioPlay() }
-    // }
+    if (num <= 10) {
+      { this.gifResize() }
+    } else if (num < 20 && num > 10) {
+      { this.flipGif() }
+    } else if (num < 30 && num >= 20) {
+      { this.audioPlay() }
+    }
   }
 
   imageUpload = () => {
@@ -77,7 +78,7 @@ class Images extends Component {
   gifResize = () => {
     let imgArray = this.state.renderedArray
     imgArray.forEach(el => {
-      let newClass = randomClass(8)
+      let newClass = randomClass()
       el.class = newClass
     })
     this.setState({
