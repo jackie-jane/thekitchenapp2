@@ -1,5 +1,4 @@
 import React from "react"
-import { iterateArray, randomInt } from '../Services/Services'
 import { randomClass } from '../Services/onClickMethods'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
@@ -16,7 +15,6 @@ class Background extends React.Component {
       () => Math.floor(Math.random() * 3))
     console.log(newGridArray)
     let finalGridArray = []
-    let i = 0
     newGridArray.forEach(el => {
       let newClass = randomClass(8)
       let image = {
@@ -25,7 +23,7 @@ class Background extends React.Component {
       }
       finalGridArray.push(image)
     })
-    this.interval = setInterval(() => { this.updateRender(this.state.i, this.state.j) }, 10000);
+    this.interval = setInterval(() => { this.updateRender(this.state.i, this.state.j) }, 5000);
     this.setState({
       upcomingGridArray: finalGridArray
     })
@@ -62,14 +60,10 @@ class Background extends React.Component {
       <ResponsiveMasonry
         columnsCountBreakPoints={{
           50: 1,
-          150: 2,
-          250: 3,
-          350: 4,
-          450: 5,
-          650: 6,
-          750: 7,
-          850: 8,
-          900: 9,
+          250: 2,
+          450: 3,
+          750: 4,
+          900: 5,
         }}
       >
         <Masonry>
