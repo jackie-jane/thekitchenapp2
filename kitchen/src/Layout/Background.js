@@ -1,5 +1,5 @@
 import React from "react"
-import { createGridArray, iterateArray } from '../Services/Services'
+import {iterateArray, randomInt } from '../Services/Services'
 import { randomClass } from '../Services/onClickMethods'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
@@ -10,12 +10,26 @@ class Background extends React.Component {
   }
 
   async componentDidMount() {
-    let newGridArray = await createGridArray('db.json')
+    let newGridArray = []
     let finalGridArray = []
+    let i = 0
+    while (i < 100) {
+      let randInt = randomInt(100)
+      newGridArray.push(randInt)
+      i++
+    }
     newGridArray.forEach(el => {
       let newClass = randomClass(8)
+      let imgRef = ''
+      if (el <= 33) {
+        imgRef = 'backgroundGifs/0.gif'
+      } else if (el > 33 && el <= 66) {
+        imgRef = 'backgroundGifs/1.gif'
+      } else {
+        imgRef = 'backgroundGifs/2.gif'
+      }
       let image = {
-        'image': el.image,
+        'image': imgRef,
         'class': newClass
       }
       finalGridArray.push(image)
