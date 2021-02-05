@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { createArray } from '../Services/Services'
+import { createArray, randomInt } from '../Services/Services'
 import { randomClass, iterateOnClick, toggleAudio } from '../Services/onClickMethods'
-import Background from '../Layout/Background'
-import Body from '../Layout/Body'
-import Footer from '../Layout/Footer'
 import Audio from '../Components/Audio'
 import './Images.css'
+
 class Images extends Component {
+  constructor() {
+    super();
+  }
   state = {
     userImgArray: [],
     renderedArray: [],
@@ -16,7 +17,8 @@ class Images extends Component {
       url: '',
       x: '',
       y: '',
-      class: ''
+      class: '',
+      transform: 'none'
     },
     audio: false
   }
@@ -30,7 +32,7 @@ class Images extends Component {
   }
 
   handleTrack = (e) => {
-    let newClass = randomClass()
+    let newClass = randomClass(8)
     this.setState({
       imageObject: {
         url: this.state.currentImage,
@@ -42,8 +44,8 @@ class Images extends Component {
   }
 
   handleClick = () => {
-    let randomInt = Math.floor(Math.random() * 100)
-    if (randomInt < 50) {
+    let num = randomInt(100)
+    if (num < 50) {
       { this.imageUpload() }
     } else {
       { this.audioPlay() }
@@ -51,9 +53,10 @@ class Images extends Component {
   }
 
   imageUpload = () => {
-    const s = this.state
-    let response = iterateOnClick(s.userImgArray, s.renderedArray, s.currentImage
-    )
+    let response = iterateOnClick(
+      this.state.imageObject,
+      this.state.renderedArray,
+      this.state.userImgArray)
     this.setState({
       renderedArray: response.newFinalArray,
       userImgArray: response.newUpcomingArray,
@@ -68,31 +71,48 @@ class Images extends Component {
     })
   }
 
+  gifResize = () => {
+    let imgArray = this.state.renderedArray
+    imgArray.forEach(el => {
+      let newClass = randomClass(8)
+      el.class = newClass
+    })
+    this.setState({
+      renderedArray: imgArray
+    })
+  }
+
+  flipGif = () => {
+    let imgArray = this.state.renderedArray
+    imgArray.forEach(el => {
+      let rotate = randomInt(360)
+      el.transform = `rotate(${rotate}deg)`
+    })
+    this.setState({
+      renderedArray: imgArray
+    })
+  }
+
   render() {
-    let t = this
-    let s = this.state
     return (
-      <>
-        <Body>
-          <section
-            onMouseMove={t.handleTrack}
-            onClick={t.handleClick}>
-            {s.audio ? <Audio></Audio> : <></>}
-            {s.renderedArray.map(element =>
-              <img
-                src={element.url}
-                className={`${element.class}`}
-                style={{
-                  position: "absolute",
-                  top: `${element.y}px`,
-                  left: `${element.x}px`
-                }}>
-              </img>
-            )}
-            <Background></Background>
-          </section>
-        </Body>
-      </>
+      <div
+        id='userGeneratedImageContainer'
+        onMouseMove={this.handleTrack}
+        onClick={this.handleClick}>
+        {this.state.audio ? <Audio></Audio> : <></>}
+        {this.state.renderedArray.map(el =>
+          <img
+            src={el.url}
+            className={`${el.class}`}
+            style={{
+              position: "absolute",
+              top: `${el.y}px`,
+              left: `${el.x}px`,
+              transform: el.transform
+            }}
+          />
+        )}
+      </div>
     );
   }
 }
