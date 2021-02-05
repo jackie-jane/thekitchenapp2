@@ -33,7 +33,7 @@ class Images extends Component {
   }
 
   handleTrack = (e) => {
-    let newClass = randomClass(8)
+    let newClass = randomClass()
     this.setState({
       imageObject: {
         url: this.state.currentImage,
@@ -45,12 +45,14 @@ class Images extends Component {
   }
 
   handleClick = () => {
+    { this.imageUpload() }
     let num = randomInt(100)
-    if (num < 50) {
-      { this.imageUpload() }
-    } else {
-      { this.audioPlay() }
-    }
+    console.log(num)
+    // if (num < 50) {
+    //   { this.imageUpload() }
+    // } else {
+    //   { this.audioPlay() }
+    // }
   }
 
   imageUpload = () => {
@@ -100,7 +102,7 @@ class Images extends Component {
         id='userGeneratedImageContainer'
         onMouseMove={this.handleTrack}
         onClick={this.handleClick}>
-        <Background/>
+        <Background />
         {this.state.audio ? <Audio></Audio> : <></>}
         {this.state.renderedArray.map(el =>
           <img

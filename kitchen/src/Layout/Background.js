@@ -16,7 +16,7 @@ class Background extends React.Component {
     console.log(newGridArray)
     let finalGridArray = []
     newGridArray.forEach(el => {
-      let newClass = randomClass(8)
+      let newClass = randomClass()
       let image = {
         'image': `backgroundGifs/${el}.gif`,
         'class': newClass
