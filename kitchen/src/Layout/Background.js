@@ -12,26 +12,15 @@ class Background extends React.Component {
   }
 
   async componentDidMount() {
-    let newGridArray = []
+    let newGridArray = Array.from({ length: 500 },
+      () => Math.floor(Math.random() * 3))
+    console.log(newGridArray)
     let finalGridArray = []
     let i = 0
-    while (i < 100) {
-      let randInt = randomInt(500)
-      newGridArray.push(randInt)
-      i++
-    }
     newGridArray.forEach(el => {
       let newClass = randomClass(8)
-      let imgRef = ''
-      if (el <= 33) {
-        imgRef = 'backgroundGifs/0.gif'
-      } else if (el > 33 && el <= 66) {
-        imgRef = 'backgroundGifs/1.gif'
-      } else {
-        imgRef = 'backgroundGifs/2.gif'
-      }
       let image = {
-        'image': imgRef,
+        'image': `backgroundGifs/${el}.gif`,
         'class': newClass
       }
       finalGridArray.push(image)
@@ -65,16 +54,6 @@ class Background extends React.Component {
       i: newI,
       j: newJ
     })
-    //   let response = iterateArray(
-    //     this.state.upcomingGridArray,
-    //     this.state.renderGridArray,
-    //     1,
-    //     0)
-    //   this.setState({
-    //     renderGridArray: response.finalArray,
-    //     upcomingGridArray: response.upcomingArray
-    //   })
-    // }
   }
 
   render() {
