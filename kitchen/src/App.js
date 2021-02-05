@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <Body>
-        {/* <Experiment /> */}
         <Images />
       </Body>
     </>

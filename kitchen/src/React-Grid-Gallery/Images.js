@@ -3,6 +3,7 @@ import { createArray, randomInt } from '../Services/Services'
 import { randomClass, iterateOnClick, toggleAudio } from '../Services/onClickMethods'
 import Audio from '../Components/Audio'
 import './Images.css'
+import Background from '../Layout/Background';
 
 class Images extends Component {
   constructor() {
@@ -99,6 +100,7 @@ class Images extends Component {
         id='userGeneratedImageContainer'
         onMouseMove={this.handleTrack}
         onClick={this.handleClick}>
+        <Background/>
         {this.state.audio ? <Audio></Audio> : <></>}
         {this.state.renderedArray.map(el =>
           <img
