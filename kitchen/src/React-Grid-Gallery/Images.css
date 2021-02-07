@@ -7,48 +7,86 @@
   width: auto;
   overflow: auto;
 }
+img {
+  position: "absolute";
+}
 .zero {
 width: 50px;
-height: auto;
-position: "absolute"
 }
 .one {
   width: 100px;
-  height: auto;
-  position: "absolute";
 }
 .two {
   width: 150px;
-  height: auto;
-  position: "absolute";
 }
 .three {
   width: 200px;
-  height: auto;
-  position: "absolute";
 }
 .four {
   width: 250px;
-  height: auto;
-  position: "absolute";
 }
 .five {
   width: 300px;
-  height: auto;
-  position: "absolute";
 }
 .six {
   width: 400px;
-  height: auto;
-  position: "absolute";
 }
 .seven {
   width: 450px;
-  height: auto;
-  position: "absolute";
 }
 .eight {
-  width: 500px;
-  height: auto;
-  position: "absolute";
+  width: 550px;
+}
+.nine {
+  width: 600px;
+}
+.ten {
+  width: 650px;
+}
+.eleven {
+  width: 700px;
+}
+.twelve {
+  height: 50px;
+}
+.thirteen {
+  height: 100px;
+}
+.fourteen {
+  height: 150px;
+}
+.fifteen {
+  height: 200px;
+}
+.sixteen {
+  height: 250px;
+}
+.seventeen {
+  height: 300px;
+}
+.eighteen {
+  height: 350px;
+}
+.nineteen {
+  height: 400px;
+}
+.twenty {
+  height: 450px;
+}
+.twentyone {
+  height: 500px;
+}
+.twentytwo{
+  height: 550px;
+}
+.twentythree{
+  height: 600px;
+}
+.twentyfour{
+  height: 1000px;
+  width: 10;
+}
+.twentyfive{
+  width: 1000px;
+  height: 65px;
 }
