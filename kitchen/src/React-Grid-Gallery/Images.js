@@ -3,6 +3,7 @@ import { createArray, randomInt } from '../Services/Services'
 import { randomClass, iterateOnClick, toggleAudio } from '../Services/onClickMethods'
 import Audio from '../Components/Audio'
 import './Images.css'
+import Background from '../Layout/Background';
 
 class Images extends Component {
   constructor() {
@@ -32,22 +33,25 @@ class Images extends Component {
   }
 
   handleTrack = (e) => {
-    let newClass = randomClass(8)
+    let newClass = randomClass()
     this.setState({
       imageObject: {
         url: this.state.currentImage,
-        x: e.nativeEvent.offsetX,
-        y: e.nativeEvent.offsetY,
+        x: e.pageX,
+        y: e.pageY,
         class: newClass
       }
     });
   }
 
   handleClick = () => {
+    { this.imageUpload() }
     let num = randomInt(100)
-    if (num < 50) {
-      { this.imageUpload() }
-    } else {
+    if (num <= 10) {
+      { this.gifResize() }
+    } else if (num < 20 && num > 10) {
+      { this.flipGif() }
+    } else if (num < 30 && num >= 20) {
       { this.audioPlay() }
     }
   }
@@ -74,7 +78,7 @@ class Images extends Component {
   gifResize = () => {
     let imgArray = this.state.renderedArray
     imgArray.forEach(el => {
-      let newClass = randomClass(8)
+      let newClass = randomClass()
       el.class = newClass
     })
     this.setState({
@@ -99,6 +103,7 @@ class Images extends Component {
         id='userGeneratedImageContainer'
         onMouseMove={this.handleTrack}
         onClick={this.handleClick}>
+        <Background />
         {this.state.audio ? <Audio></Audio> : <></>}
         {this.state.renderedArray.map(el =>
           <img
